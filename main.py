@@ -4,7 +4,6 @@ import matplotlib.pyplot as plt
 import sys
 import pandas as pd
 import math
-import tensorflow as tf
 
 #reading text file
 def read_file(filename):
@@ -19,10 +18,10 @@ def read_file(filename):
 		SystemExit
     
  #splitting using translation table
- translation_table = str.maketrans(string.punctuation+string.ascii_uppercase," "*len(string.punctuation)+string.ascii_lowercase)
+translation_table = str.maketrans(string.punctuation+string.ascii_uppercase," "*len(string.punctuation)+string.ascii_lowercase)
 
  #returns a list of the words
-  def get_words_from_line_list(text):
+def get_words(text):
 	
 	text = text.translate(translation_table)
 	word_list = text.split()
@@ -45,10 +44,10 @@ def count_freq(word_list):
 	return D
 
 #word frequnecy for each file
-def word_frequencies_for_file(f):
+def word_freq(f):
 	
 	line_list = read_file(f)
-	word_list = get_words_from_line_list(line_list)
+	word_list = get_words(line_list)
 	freq_mapping = count_freq(word_list)
 
 	return freq_mapping
@@ -73,11 +72,11 @@ def vector_angle(D1, D2):
 
 def docsimilarity(f1, f2):
 
-	sorted_list_1 = word_frequencies_for_file(f1)
-	sorted_list_2 = word_frequencies_for_file(f2)
+	sorted_list_1 = word_freq(f1)
+	sorted_list_2 = word_freq(f2)
 	distance = vector_angle(sorted_list_1, sorted_list_2)
 	
 	print("Similarity score = %f (radians)"% distance)
   
 #driver code
-  docsimilarity("f1.txt", "f2.txt")
+docsimilarity(r"f1.txt", r"f2.txt")
