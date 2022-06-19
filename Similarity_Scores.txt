@@ -20,3 +20,8 @@ Here are 25 pairs of randomly tested movie reviews from the database that is lin
 0.942752 (radians)
 0.880088 (radians)
 1.151878 (radians)
+1.294174 (radians)
+0.558975 (radians)
+0.732471 (radians)
+1.228906 (radians)
+1.684712 (radians)
